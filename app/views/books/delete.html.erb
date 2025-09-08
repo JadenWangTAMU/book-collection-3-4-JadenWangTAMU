@@ -1,0 +1,7 @@
+<h1>Delete Book</h1>
+
+<p>Are you sure you want to delete this book?</p>
+
+<p><%= @book.title %></p>
+<%= button_to "Delete this book", book_path(@book), method: :delete, data: {turbo: false} %>
+<%= link_to "Cancel", books_path %>
