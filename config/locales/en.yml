@@ -31,3 +31,17 @@
 
 en:
   hello: "Hello world"
+
+  activerecord:
+    errors:
+      models:
+        book:
+          attributes:
+            title:
+              blank: "can not be blank"
+            author:
+              blank: "can not be blank"
+            price:
+              blank: "can not be blank"
+            published_date:
+              blank: "can not be blank"
