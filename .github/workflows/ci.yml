@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+    branches: [ main, test ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  rspec:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1.2'
+          bundler-cache: true
+
+      - name: Install OS deps for SQLite
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libsqlite3-dev
+
+      - name: Bundle install
+        run: |
+          bundle config set without 'development'
+          bundle install --jobs 4 --retry 3
+
+      - name: Prepare database
+        env:
+          RAILS_ENV: test
+        run: |
+          bundle exec rails db:prepare
+
+      - name: Run RSpec
+        env:
+          RAILS_ENV: test
+        run: |
+          bundle exec rspec --format progress
