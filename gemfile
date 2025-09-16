@@ -70,6 +70,8 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
-gem 'concurrent-ruby', '1.3.4'
-gem 'yaml_db'
+  gem 'concurrent-ruby', '1.3.4'
+  gem 'yaml_db'
+  gem 'rexml'
+  gem 'simplecov', :require=>false
 end
