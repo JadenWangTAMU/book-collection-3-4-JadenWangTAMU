@@ -72,6 +72,9 @@ group :test do
   gem "webdrivers"
   gem 'concurrent-ruby', '1.3.4'
   gem 'yaml_db'
-  gem 'rexml'
   gem 'simplecov', :require=>false
 end
+
+gem 'rexml'
+gem 'brakeman'
+gem 'rubocop'
